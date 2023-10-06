@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Add</title>
+</head>
+<body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="forms">
+          <form id="form-add">
+            <label for="name">Movies Name</label>
+            <input type="text" name="name" id="name" required>
+            <label for="city">City</label>
+            <input type="city" name="city" id="city" required>
+            <button type="submit"> 
+              Submit 
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+  $(document).ready(function() {
+    console.log('tes web 1')
+
+    $('#form-add').submit(function (event) { 
+        event.preventDefault();
+        let form = document.getElementById('form-add')
+        let movies = $('#name').val()
+        let city = $('#city').val()
+        // console.log( formData)
+        $.ajax({
+            url: 'http://localhost:8080/api/test/add',
+            headers: {
+              'Accept': 'application/json'
+            },
+            dataType: 'json',
+            method: 'POST',
+            data: {
+              name: movies,
+              city: city
+            },
+            success: function (response) {
+                alert('Your form has been sent successfully.');
+                window.location.href = "./index.html";
+            }, 
+            error: function (xhr, status, error) {
+                alert('Your form was not sent successfully.'); 
+                console.error(error); 
+            } 
+        }); 
+    }); 
+
+  })
+</script>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <title>Document</title>
+</head>
+<body>
+    <h1>Web 1</h1>
+    <div class="container">
+      <div class="wrapper">
+        <div class="buttons">
+          <a href="javascript:void(0)" name="process" id="process" class="test">Get Data</a>
+        </div>
+        <div class="tables">
+          <table id="tables-data">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>City</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+        <a href="./form.html">Add Data</a>
+        <div class="message" id="message">
+
+        </div>
+      </div>
+    </div>
+</body>
+  <script>
+    $(document).ready(function(){
+
+      document.getElementById('process').addEventListener('click', function() {
+        $.ajax({
+            url: 'http://localhost:8080/api/test',
+            type: "GET",
+            success: function (data) {
+                let x = JSON.stringify(data);
+                for(var i = 0; i < data.data.length; i++) {
+                    $('#tables-data tbody').append(
+                      `<tr>
+                          <td>${data.data[i].name}</td>
+                          <td>${data.data[i].city}</td>
+                        </tr>
+                      `
+                    )
+                }
+            },
+            error: function (error) {
+                $("#message").append('Error CORS ');
+            }
+        });
+      });
+    });
+  </script>
+</html>
