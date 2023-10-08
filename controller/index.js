@@ -1,6 +1,7 @@
-import { testFetch, testPost } from "./api/index.js";
+import { testFetch, testPost, testDelete} from "./api/index.js";
 
 export {
   testFetch,
-  testPost
+  testPost,
+  testDelete
 }

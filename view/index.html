@@ -17,6 +17,7 @@
           <table id="tables-data">
             <thead>
               <tr>
+                <th>ID</th>
                 <th>Name</th>
                 <th>City</th>
               </tr>
@@ -44,6 +45,7 @@
                 for(var i = 0; i < data.data.length; i++) {
                     $('#tables-data tbody').append(
                       `<tr>
+                          <td>${data.data[i].id}</td>
                           <td>${data.data[i].name}</td>
                           <td>${data.data[i].city}</td>
                         </tr>

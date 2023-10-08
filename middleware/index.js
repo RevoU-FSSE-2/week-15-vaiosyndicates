@@ -1,5 +1,8 @@
 import { v4 as uuidv4 } from 'uuid';
 import cors from 'cors'
+import express from "express";
+
+const app = express();
 
 export const requestIdMiddleware = (req, res, next) => {
   if (req.headers['x-request-id']) {

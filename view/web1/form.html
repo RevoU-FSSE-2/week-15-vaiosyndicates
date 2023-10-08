@@ -32,6 +32,7 @@
         let form = document.getElementById('form-add')
         let movies = $('#name').val()
         let city = $('#city').val()
+        let ids = parseInt(Math.ceil(Math.random() * Date.now()).toPrecision(10).toString().replace(".", ""))
         // console.log( formData)
         $.ajax({
             url: 'http://localhost:8080/api/test/add',
@@ -41,6 +42,7 @@
             dataType: 'json',
             method: 'POST',
             data: {
+              id: ids,
               name: movies,
               city: city
             },
